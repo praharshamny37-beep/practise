@@ -1,0 +1,823 @@
+\documentclass[12pt,a4paper,twoside]{report}
+\usepackage{graphicx}
+\usepackage{keyval}
+\usepackage[top=1.87cm,bottom=1.9cm,inside=3cm,outside=1.25cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{rotating}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{fancy}
+\usepackage{float}
+\usepackage{longtable}
+\fancyhf{}
+\usepackage{url}
+\fancyhead[R]{
+\fontsize{10}{12}
+\textit{Department of Ship Technology, CUSAT, B.Tech (NA\&SB), Batch -- XLVIII}
+}
+\usepackage{enumerate}
+\fancyfoot[C]{
+\thepage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+\fancyhf{}
+
+\fancyhead[R]{
+\fontsize{10}{12}
+\textit{Department of Ship Technology, CUSAT, B.Tech (NA\&SB), Batch -- XLVIII}
+}
+
+\fancyfoot[C]{
+\thepage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\centering\fontsize{20}{16}\bfseries}{}{0pt}{}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+
+\tableofcontents
+
+
+\listoffigures
+
+
+\listoftables
+
+
+\pagenumbering{arabic}
+\setcounter{chapter}{2}
+\chapter{HULL GEOMETRY}
+
+\section{INTRODUCTION}
+
+Hull geometry is a fundamental part of ship design, as it defines the shape and underwater volume of the vessel and directly affects its buoyancy, stability, resistance, propulsion, and overall performance. In this chapter, the hull form is developed using the NPL Series based on the selected principal dimensions and hull form parameters.
+\vspace{\baselineskip}\par\noindent The generated hull geometry is represented using an offset table, which gives the hull dimensions at different stations and waterlines. These offsets are then used to develop the Bonjean curves, which provide sectional areas and their moments at different drafts. Using the sectional and waterplane data, the required hydrostatic details such as displacement, LCB, KB, waterplane area, \(I_T\), \(I_L\), and metacentric heights are calculated.
+\vspace{\baselineskip}\par\noindent The results obtained in this chapter provide the geometric and hydrostatic basis for the stability, resistance, propulsion, and other design calculations of the vessel.
+
+\section{METHODS FOR HULL FORM GENERATION}
+Several methods can be adopted to generate ship hull offsets. The main methods considered for the development of the hull-form are as follows.
+\begin{enumerate}[\alph*)]
+    \item \textbf{Parent Hull Form Method : }In this method, an existing hull form of a similar vessel is selected as the parent hull. Its offsets are used as the starting geometry and modified according to the required principal dimensions and design requirements.
+    \item \textbf{Systematic Hull Series Method : }Systematic series such as NPL, Series 60, Series 64, and Taylor Standard Series provide predefined hull forms for different combinations of hull-form parameters. Offsets corresponding to the required parameters can be obtained and used to develop the hull geometry.
+    \item \textbf{Analytical Method : }In analytical methods, mathematical equations or curves are used to define the hull surface and generate offsets at specified stations and waterlines. This method provides greater mathematical control over the hull form but requires suitable equations and parameters.
+    \item \textbf{Transformation or Distortion Method : }In this method, an existing hull form is systematically modified or distorted to achieve the required principal dimensions and hull-form coefficients. The original hull characteristics are retained as much as possible while adapting the geometry to the design requirements.
+    \item \textbf{Direct Hull Modelling Method : }The hull is directly created using CAD or naval architecture software by defining the stations, waterlines, sections, and surface geometry. This provides high flexibility but requires careful control to ensure that the resulting hull satisfies the required hydrostatic and geometric characteristics.
+\end{enumerate}
+\vspace{\baselineskip}\par\noindent For the present vessel, the NPL Series method was selected to generate the hull offsets. The selection was based on the compatibility of the series with the required hull-form parameters and its systematic approach to obtaining a suitable hull geometry.
+
+\section{OFFSET GENERATION PROCEDURE}
+The general procedure for generating offsets from a systematic hull series begins with the selection of a suitable series based on the type of vessel and its design requirements. The principal dimensions and relevant coefficients of the hull-form such as \(C_B\), \(C_P\), \(L/B\) and \(B/T\) are determined and compared with the available forms in the selected series.
+\vspace{\baselineskip}\par\noindent Once a suitable parent hull is identified, the corresponding sectional offsets at different stations and waterlines are obtained from the series data. These offsets are then scaled according to the required length, width, and draft of the vessel. If the exact required hull-form parameters are not directly available, interpolation or suitable transformation of the parent hull may be carried out to obtain the desired form.
+\vspace{\baselineskip}\par\noindent The resulting offsets are compiled into an offset table and used to construct the hull geometry. The generated hull is then checked by calculating sectional areas, displacement, and hydrostatic particulars to ensure that the final hull form satisfies the required design parameters.
+
+\section{NPL SERIES}
+The NPL Series (National Physical Laboratory Series) is a systematic series of round-bilge, high-speed displacement/semi-displacement hull forms developed through experimental investigations at the National Physical Laboratory (NPL), Teddington, United Kingdom. The series was developed to study the resistance and performance of slender, relatively high-speed displacement hulls by systematically varying important hull parameters. The original NPL work was reported in the late 1960s and was further developed by Bailey in 1976 through additional model tests. \cite{sahoo2011resistance}
+\vspace{\baselineskip}\par\noindent The NPL models were developed around a parent hull form, with the series covering different hull proportions and operating conditions. The original experimental program involved model testing to investigate the effects of parameters such as the length-to-beam ratio, beam-to-draft ratio, and slenderness on resistance. The parent models had a model waterline length of about 2.54 m, and the original series was centered on a block coefficient of approximately 0.397–0.40. \cite{sahoo2011resistance}
+\vspace{\baselineskip}\par\noindent The hull form is characterized by a round bilge, relatively fine forward sections with a flare near the design waterline, and a stern form suitable for high-speed displacement operation. The commonly reported NPL range includes approximately \(L/B = 3.33–7.50\), while other presentations of resistance-test series give broader parameter ranges depending on the specific NPL models considered. 
+\vspace{\baselineskip}\par\noindent The NPL hull form has also been used as the basis for subsequent research and systematic series. In particular, the Southampton/NPL extended series developed additional slender hulls from the original NPL forms, including models investigated as both monohulls and catamarans. These studies extended the application of the original NPL hull concept to high-speed displacement and multihull vessels.
+\section{SUITABILITTY OF NPL SERIES}
+The applicability of the NPL Series\cite{bailey1976npl} was verified by comparing the calculated parameters of the present vessel with the limiting criteria specified in the reference to the NPL series and the UCL Design Procedure Book\cite{ucl_ship_design_data_book}. The comparison is presented in Table~\ref{tab:npl_criteria}
+\begin{table}[H]
+\centering
+\caption{Comparison of NPL Series applicability criteria with the present vessel}
+\vspace{2mm}
+\label{tab:npl_criteria}
+\begin{tabular}{lccc}
+\hline
+\vspace{2mm}
+\textbf{Parameter} & \textbf{NPL/UCL Criteria} & \textbf{Present Vessel} & \textbf{Status} \\
+\hline
+\vspace{2mm}
+$L/B$ & 3.33--7.50 & 7.492 & Satisfied \\
+$F_n (maximum)$ & 0.30--1.20 & 0.43523 & Satisfied \\
+$F_n (cruise)$ & 0.30--1.20 & 0.31088 & Satisfied \\
+Length--Displacement Ratio & 4.47--8.30 & 7.413 & Satisfied \\
+$F_{n(VOL)}$ & 0.5--3.3 & 1.185 & Satisfied \\
+$M$ & 4.5--8.4 & 7.413 & Satisfied \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{\baselineskip}\par\noindent The comparison shows that all the parameters calculated for the present vessel fall within the specified applicability ranges. In particular, the values \(L/B\), the Froude number, the length-displacement ratio, the volumetric Froude number and \(M\) meet the respective limits given by the design criteria of the NPL series and UCL. Therefore, the hull form of the present vessel lies within the applicable range of the NPL systematic series, justifying its selection to generate the required hull offsets.
+\section{GENERATION OF OFFSETS FROM NPL SERIES}
+\subsection{Selection of Parent Hull}
+Start by explaining that the NPL Series consists of different parent models covering different combinations of \(L/B\), displacement ratio, and \(M\). Based on the parameters calculated for the present vessel, an appropriate parent model is selected from the NPL series. The selected parent hull provides the basic sectional geometry from which the required vessel offsets are derived.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/DETAILS OF MODELS COMPRISING THE SERIES_page-0001.jpg}
+    \caption{Details of Models Comprising the series}
+    \label{fig:Details of Models Comprising the series}
+\end{figure}
+\subsection{Calculation of Scale Factor}
+After selecting the parent model, the dimensions of the parent model are related to the dimensions of the actual vessel. A scale factor is calculated using the ratio between the parent-model length and the required ship length:
+
+$$ \text{Scale factor}= \frac{L_{\text{parent}}}{L_{\text{ship}}} $$
+
+\vspace{\baselineskip}\par\noindent The same scaling relationship is then used to obtain the reduced design dimensions corresponding to the length of the parent-model. This provides a common basis for transferring the parent-hull offsets to the required vessel dimensions.
+\subsection{Calculation of Waterline Ratio}
+Once the reduced dimensions are obtained, the required waterline heights are determined by comparing the reduced design draft with the draft of the parent model. The waterline ratio is calculated as:
+
+$$ R_{WL}= \frac{T_{\text{reduced}}}{T_{\text{parent}}} $$
+
+\vspace{\baselineskip}\par\noindent This ratio is applied to the heights of the waterlines of the parent model to obtain the corresponding waterline positions of the designed vessel.
+\subsection{Calculation of Offset Ratio}
+The breadth of the reduced design is then compared with the corresponding breadth of the parent model. The offset ratio is obtained as:
+
+$$ R_{O}= \frac{B_{\text{reduced}}}{B_{\text{parent}}} $$
+
+\vspace{\baselineskip}\par\noindent The calculated ratio is applied to the half-breadths of the parent-hull at each station and waterline. This converts the parent-hull sectional offsets into the corresponding offsets for the designed vessel. The NPL report follows this procedure in its work example.\cite{bailey1976npl}
+
+\subsection{Extraction of Parent Hull Offsets}
+The parent-hull offsets are obtained from the offset table provided in the NPL Series. The table contains the half-breadths corresponding to different stations and waterlines of the parent hull. These values form the basic sectional data used to generate the offsets of the present vessel. The NPL report specifically states that the hull offsets of a given design are derived from the parent-hull data provided in its tables.\cite{bailey1976npl}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/Offsets of Parent Model_page-0001.jpg}
+    \caption{Offsets of Parent Model}
+    \label{fig:Offsets of Parent Model}
+\end{figure}
+\subsection{Generation of Final Offsets}
+The calculated waterline and offset ratios are applied to the parent-hull data to obtain the corresponding half-widths and waterline positions for the designed vessel. The resulting values are arranged station-wise and waterline-wise to form the final offset table as presented in the following Table \ref{tab:offset_table}
+\vspace{\baselineskip}\par\noindent The generated offset table represents the transverse geometry of the hull and is subsequently used to construct the hull surface. The NPL procedure indicates that after obtaining the required offsets and centreline heights, sufficient information is available for preparing the lines plan.
+
+
+\begin{table}[H]
+\centering
+\caption{Generated Offset Table}
+\label{tab:offset_table}
+\vspace{2mm}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|ccccccccccc}
+\toprule
+\textbf{Station} &
+\textbf{0} &
+\textbf{0.5} &
+\textbf{1} &
+\textbf{1.5} &
+\textbf{2} &
+\textbf{3} &
+\textbf{LWL} &
+\textbf{4} &
+\textbf{5} &
+\textbf{6} &
+\textbf{MDK} \\
+\midrule
+
+0    & 0 & 0 & 0 & 0 & 1.93 & 5.69 & 6.14 & 6.21 & 6.25 & 6.28 & 6.30 \\
+0.5  & 0 & 0 & 0 & 0 & 2.28 & 5.82 & 6.24 & 6.37 & 6.42 & 6.45 & 6.47 \\
+1    & 0 & 0 & 0 & 0 & 2.62 & 5.96 & 6.40 & 6.52 & 6.57 & 6.61 & 6.63 \\
+1.5  & 0 & 0 & 0 & 0 & 2.95 & 6.11 & 6.53 & 6.65 & 6.71 & 6.75 & 6.78 \\
+2    & 0 & 0 & 0 & 0 & 3.28 & 6.26 & 6.65 & 6.76 & 6.84 & 6.89 & 6.92 \\
+3    & 0 & 0 & 0 & 0.64 & 3.97 & 6.45 & 6.85 & 6.99 & 7.11 & 7.17 & 7.22 \\
+4    & 0 & 0 & 0 & 2.00 & 4.54 & 6.74 & 7.07 & 7.20 & 7.35 & 7.42 & 7.47 \\
+5    & 0 & 0 & 0 & 2.79 & 4.95 & 6.94 & 7.23 & 7.36 & 7.53 & 7.62 & 7.68 \\
+6    & 0 & 0 & 0 & 3.19 & 5.25 & 7.05 & 7.34 & 7.48 & 7.67 & 7.78 & 7.84 \\
+7    & 0 & 0 & 0.74 & 3.65 & 5.49 & 7.13 & 7.44 & 7.57 & 7.77 & 7.89 & 7.96 \\
+8    & 0 & 0 & 1.97 & 4.07 & 5.61 & 7.17 & 7.48 & 7.61 & 7.83 & 7.97 & 8.06 \\
+9    & 0 & 0 & 2.49 & 4.24 & 5.57 & 7.04 & 7.40 & 7.58 & 7.85 & 8.02 & 8.14 \\
+10   & 0 & 0 & 2.62 & 4.19 & 5.38 & 6.79 & 7.22 & 7.46 & 7.80 & 8.03 & 8.18 \\
+11   & 0 & 0.61 & 2.61 & 3.98 & 5.06 & 6.47 & 6.94 & 7.22 & 7.66 & 7.97 & 8.17 \\
+12   & 0 & 1.20 & 2.50 & 3.65 & 4.61 & 6.02 & 6.53 & 6.85 & 7.41 & 7.84 & 8.12 \\
+13   & 0 & 1.27 & 2.26 & 3.21 & 4.05 & 5.41 & 5.97 & 6.33 & 7.04 & 7.65 & 8.05 \\
+14   & 0.01 & 1.06 & 1.94 & 2.73 & 3.45 & 4.70 & 5.29 & 5.70 & 6.55 & 7.34 & 7.88 \\
+15   & 0.18 & 0.88 & 1.59 & 2.24 & 2.85 & 3.97 & 4.55 & 4.98 & 5.92 & 6.85 & 7.54 \\
+16   & 0 & 0.68 & 1.23 & 1.75 & 2.25 & 3.21 & 3.74 & 4.15 & 5.11 & 6.16 & 6.98 \\
+17   & 0 & 0.43 & 0.88 & 1.25 & 1.63 & 2.41 & 2.85 & 3.21 & 4.12 & 5.25 & 6.17 \\
+18   & 0 & 0.16 & 0.49 & 0.79 & 1.08 & 1.68 & 2.03 & 2.32 & 3.06 & 4.07 & 5.00 \\
+18.5 & 0 & 0 & 0.26 & 0.55 & 0.79 & 1.24 & 1.51 & 1.76 & 2.47 & 3.40 & 4.28 \\
+19   & 0 & 0 & 0 & 0.24 & 0.45 & 0.85 & 1.08 & 1.26 & 1.87 & 2.67 & 3.49 \\
+19.5 & 0 & 0 & 0 & 0 & 0 & 0.38 & 0.61 & 0.78 & 1.26 & 1.93 & 2.67 \\
+20   & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.11 & 0.44 & 0.98 & 1.49 \\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\vspace{\baselineskip}\par\noindent After applying the calculated scale, waterline, and offset ratios to the NPL parent-hull data, the resulting half-breadths were arranged according to the corresponding stations and waterlines to form the generated offset table. The table represents the transverse dimensions of the hull at different longitudinal and vertical positions and therefore provides the basic geometric information required for constructing the hull surface.
+
+\vspace{\baselineskip}\par\noindent The offsets at the intermediate stations describe the variation of the hull width along its length, while the waterline values define the change in the hull width with draft. The values near the forward and aft ends reduce progressively towards the ends of the vessel, ensuring a smooth transition of the hull form. The generated offsets were subsequently checked for continuity and consistency before being used for hull modeling.
+
+\vspace{\baselineskip}\par\noindent In addition to the sectional half-breadths, keel and stern offsets are required to completely define the longitudinal profile of the hull. These offsets provide the corresponding vertical or longitudinal reference dimensions in the keel and stern regions and complement the sectional offset table. The calculated keel and stern offsets used to complete the hull geometry are presented in the following Table ~\ref{tab:keel_stem_offsets}
+\begin{table}[H]
+\centering
+\caption{Keel and Stem Offsets}
+\label{tab:keel_stem_offsets}
+
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\textbf{Keel Offset}
+
+\vspace{2mm}
+
+\begin{tabular}{cc}
+\toprule
+\textbf{Station} & \textbf{Offset (m)} \\
+\midrule
+0    & 2.71 \\
+0.5  & 2.61 \\
+1    & 2.51 \\
+1.5  & 2.42 \\
+2    & 2.32 \\
+3    & 2.13 \\
+4    & 1.93 \\
+5    & 1.73 \\
+6    & 1.54 \\
+7    & 1.35 \\
+8    & 1.16 \\
+9    & 0.96 \\
+10   & 0.77 \\
+11   & 0.58 \\
+12   & 0.38 \\
+13   & 0.17 \\
+14   & 0 \\
+15   & 0 \\
+16   & 0 \\
+17   & 0.19 \\
+18   & 0.39 \\
+18.5 & 0.78 \\
+19   & 1.50 \\
+19.5 & 3.06 \\
+20   & 5.53 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\textbf{Sterm Offset}
+
+\vspace{2mm}
+
+\begin{tabular}{cc}
+\toprule
+\textbf{Waterline} & \textbf{Offset (m)} \\
+\midrule
+WL 4 & 0.39 \\
+WL 5 & 1.46 \\
+WL 6 & 2.38 \\
+MDK  & 3.00 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+
+\end{table}
+\section{HULL MODEL DEVELOPMENT}
+After generating the final offsets, a three-dimensional hull model was developed to verify the generated geometry and its hydrostatic characteristics. The modeling was carried out using Rhino, followed by hydrostatic verification in Maxsurf Modeler. Developing the hull model is an important step because the resulting geometry is used as the basis for several subsequent stages of ship design, including hydrostatics, stability analysis, resistance and propulsion estimation, weight and displacement verification, and further structural and performance studies.
+\subsection{Lines Plan Development}
+The generated offsets, including the sectional, keel, and stern offsets, were used to prepare the line plan of the vessel. The body plan, half-width plan, and sheer plan were developed from the corresponding offset data and used as geometric reference for three-dimensional hull modeling.
+\subsection{Hull Modelling in Rhino}
+The line plan was imported into Rhino and positioned with respect to the appropriate longitudinal, transverse, and vertical reference planes. The station sections, waterlines, keel profile and stern profile were reconstructed from the generated geometry. The curves were checked for continuity and fairness before generating the hull surfaces.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/RHINO MODEL.png}
+    \caption{Model Generated in Rhino}
+    \label{fig:RHINO MODEL}
+\end{figure}
+\vspace{\baselineskip}\par\noindent The surfaces were then created through the corresponding sectional curves and joined to form the complete three-dimensional hull. The resulting model was checked for continuity and surface integrity so that it could be used for further analysis.
+\subsection{Import into Maxsurf}
+After the hull surface was completed in Rhino, the model was exported in a compatible IGES format for transfer to Maxsurf Modeler. The IGES format allows the geometric information of the Rhino surface to be transferred while retaining the shape of the developed hull.
+\vspace{\baselineskip}\par\noindent The exported model was then imported into Maxsurf Modeler, where the hull geometry was checked against the original design dimensions. The length, width, draft, and reference planes were verified to ensure that no dimensional change occurred during transfer. The orientation and position of the model relative to the longitudinal, transverse, and vertical axes were also checked before proceeding with the hydrostatic analysis.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/MAXSURF MODEL.png}
+    \caption{Model Generated in Maxsurf}
+    \label{fig:maxsurf model}
+\end{figure}
+\vspace{\baselineskip}\par\noindent After importation, the hull was positioned with respect to the design waterline (LWL). The LWL was checked to ensure that it intersected the hull in the intended design draft and that the underwater portion of the model represented the required displacement condition. The imported surface was also inspected for gaps, discontinuities, or unwanted edges, since any surface defect can affect the accuracy of the hydrostatic calculations.
+\subsection{Hydrostatic Verification}
+Once the geometry was verified, Maxsurf was used to calculate the
+hydrostatic characteristics of the imported hull at the LWL. The 
+displacement, volume, waterplane area, LCB, LCF, KB, and other
+hydrostatic parameters obtained were compared with the values obtained from 
+offset-based calculations. This comparison provided an additional check
+that the Rhino model accurately represented the hull geometry generated
+from the NPL offsets.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{CHAPTER 3/hydrostatics.png}
+    \caption{Hydrostatics at DWL}
+    \label{fig:hydrostatics at dwl}
+\end{figure}
+
+\vspace{\baselineskip}\par\noindent Hydrostatic verification is carried out to confirm that the three-dimensional hull model generated from the NPL offsets accurately represents the intended hull geometry. Although the hull has been constructed from the offset table, errors can occur during conversion of offsets into curves, surfaces, or during the transfer of the model between software. Therefore, the completed model must be checked independently after importing it into Maxsurf.
+\vspace{\baselineskip}\par\noindent The hydrostatic analysis at the Design Waterline (DWL) provides a check on the underwater geometry of the model. Parameters such as displacement, underwater volume, waterplane characteristics, centers of buoyancy, and other hydrostatic details are examined to ensure that the model behaves as expected under the design condition.
+\vspace{\baselineskip}\par\noindent This verification also confirms that the design draft, waterline position, hull dimensions, and underwater volume have been correctly represented in the three-dimensional model. Any significant difference between the hydrostatics obtained from the offset calculations and those obtained from the Maxsurf model would indicate a possible error in the hull geometry or modeling process.
+\vspace{\baselineskip}\par\noindent Therefore, hydrostatic verification acts as a validation step between hull-form generation and subsequent ship-design analysis. Once the model is verified, the same hull geometry can be confidently used for further calculations such as stability, resistance, propulsion, weight-displacement analysis, and other performance studies.
+
+\subsection{Aim of Model generation}
+The purpose of generating a model in Rhino is to create an accurate 3D 
+geometric representation of the hull of the ship that can be imported into Maxsurf for detailed 
+hydrostatic and stability analysis. By developing a precise surface model in Rhino, 
+essential parameters such as volume, center of buoyancy, and waterplane area can be 
+accurately computed in Maxsurf. These calculated hydrostatic properties and stability 
+values are then used to validate the manual calculations to ensure accuracy in the ship design process and to confirm the reliability of both the numerical model and hand
+derived results. Furthermore, a model is essential to perform CFD calculations.  
+\vspace{\baselineskip}\par\noindent For the project, the verification of the area up to the main deck was validated 
+with the area obtained from the rhino by making a planar surface in the rhino, and the hydrostatics 
+were validated with the hydrostatic values obtained from Maxsurf.
+
+\section{LINES PLAN}
+Lines plan is a set of technical drawings used to represent the three-dimensional geometry of a ship's hull in two-dimensional views. It is prepared from the generated hull offsets and provides a clear representation of the hull shape at different stations, waterlines, and longitudinal sections. The line plan is an important reference for hull construction, hull fairness check, and hull geometry communication developed. 
+\vspace{\baselineskip}\par\noindent A conventional lines plan consists of three principal drawings:
+\subsection{Body Plan}
+The body plan shows the transverse sections of the hull at different stations when viewed from the forward and aft ends. It represents the variation of the hull's breadth and shape along its length. The body plan is particularly useful for checking the fairness and continuity of the individual hull sections.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/BODYPLAN_page-0001 (1).jpg}
+    \caption{Body Plan}
+    \label{fig:body plan}
+\end{figure}
+
+\subsection{Half-Breadth Plan}
+The half-breadth plan is a view of the hull from above and shows the positions of the waterlines along the length of the vessel. Since the hull is generally symmetrical about the centreline, only one half of the hull is normally represented. It illustrates how the breadth of the hull varies at different longitudinal positions and waterlines.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/HALF BREADTH PLAN_page-0001 (1).jpg}
+    \caption{Half Breadth Plan}
+    \label{fig:half breadth plan}
+\end{figure}
+\subsection{Sheer Plan}
+The sheer plan, also called the profile plan, shows the hull from the side. It represents the longitudinal profile of the vessel, including the keel line, stem, stern, deck, or sheer line, and waterlines. Provides the longitudinal reference required to define the overall form and vertical dimensions of the hull.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/SHEER PLAN_page-0001 (1).jpg}
+    \caption{Sheer Plan}
+    \label{fig:sheer plan}
+\end{figure}
+\vspace{\baselineskip}\par\noindent Together, these three views provide a complete representation of the hull geometry. The body plan describes the transverse shape, the half-breadth plan describes the plan-view shape, and the sheer plan describes the longitudinal profile. The three drawings are mutually related and are used together to verify that the hull geometry generated from the NPL offsets is consistent and fair.
+
+\section{BONJEAN CURVES}
+Bonjean curves are a set of curves that are used to represent the submerged sectional area of a ship at different drafts along its length. For each station of the vessel, a curve is plotted showing how the underwater sectional area changes as the draft increases. Thus, the Bonjean diagram provides a convenient way of representing the longitudinal and vertical distribution of the underwater volume of the hull.
+\vspace{\baselineskip}\par\noindent The sectional areas required for the construction of the Bonjean curves are obtained from the hull geometry at different stations and waterlines. The curves therefore provide a direct relationship between draft, sectional area, and longitudinal position, allowing the underwater geometry of the vessel to be evaluated for different loading conditions.
+\subsection{Applications of Bonjean Curves}
+Bonjean curves are used mainly for the following:
+\begin{enumerate}[\alph*)]
+    \item \textbf{Displacement Calculation : }Bonjean curves provide the sectional areas at different drafts and stations. These sectional areas can be integrated along the length of the vessel to determine the underwater volume and displacement.
+    \item \textbf{Determination of LCB : }The sectional areas obtained from the Bonjean curves are used to determine the longitudinal distribution of buoyancy. From this distribution, the Longitudinal Centre of Buoyancy (LCB) can be calculated.
+    \item \textbf{Buoyancy Distribution : }Bonjean curves show how the underwater sectional area varies along the length of the ship for a particular draft. This helps in determining the distribution of buoyancy along the vessel.
+    \item \textbf{Longitudinal Strength Analysis : }The buoyancy distribution obtained from Bonjean curves can be compared with the weight distribution to determine the net load distribution along the ship. This is useful for calculating longitudinal shear forces and bending moments.
+    \item \textbf{Damage Stability Analysis : }Bonjean curves provide sectional information about the underwater portion of the hull. This information can be used when analysing changes in buoyancy and displacement after flooding of different compartments.
+    \item \textbf{Trim and Loading Analysis : }Since the curves provide sectional areas at different drafts, they can be used to evaluate changes in displacement and buoyancy distribution when the vessel operates at different drafts or trim conditions.
+\end{enumerate}
+
+\section{BONJEAN CALCULATIONS}
+The Bonjean areas have been calculated using the methods mentioned below.    
+\subsection{Area using Simpson's rules}
+The area up to WL 0.5 for each station was calculated using the
+trapezoidal rule.
+
+\begin{equation}
+\mathrm{AREA}_{0.5}
+=
+2 \times 0.5 \times h \times (y_0+y_{0.5})
+\end{equation}
+
+\vspace{\baselineskip}\par\noindent where
+
+\begin{align*}
+h &= 0.5 \\
+y_0 &= \text{half ordinate at WL 0 for a station} \\
+y_{0.5} &= \text{half ordinate at WL 0.5 for a station}
+\end{align*}
+
+\vspace{\baselineskip}\par\noindent The area up to WL 6 was calculated using Simpson's rule.
+Simpson's rules $1,3,3,1$ and $1,4,1$ were used to calculate the area
+of the water line up to waterline 6.
+
+\vspace{\baselineskip}\par\noindent For Simpson's $1,3,3,1$ rule:
+
+\begin{equation}
+A =
+3 \times \frac{h \times \sum f(x)}{8}
+\end{equation}
+
+\vspace{\baselineskip}\par\noindent For Simpson's $1,4,1$ rule:
+
+\begin{equation}
+A =
+\frac{h \times \sum f(x)}{3}
+\end{equation}
+
+\vspace{\baselineskip}\par\noindent It was also found that using Simpson's $1,3,3,1$ and $1,4,1$ rules,
+the obtained area was more accurate compared to the $5,8,-1$ rule.
+
+\vspace{\baselineskip}\par\noindent The areas obtained from Simpson's rules were also compared with the
+areas obtained by plotting a planar surface between the stations and
+the centreline at various stations, and the area up to the main deck
+was compared.
+\begin{table}[H]
+\centering
+\caption{Bonjean Areas}
+\vspace{2mm}
+\label{tab:sectional_areas}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|ccccccccccc}
+\toprule
+\textbf{STN/WL} &
+\textbf{0} &
+\textbf{0.5} &
+\textbf{1} &
+\textbf{1.5} &
+\textbf{2} &
+\textbf{3} &
+\textbf{LWL} &
+\textbf{4} &
+\textbf{5} &
+\textbf{6} &
+\textbf{MDK} \\
+\midrule
+
+0    & 0 & 0 & 0 & 0.24125 & 0.965 & 13.0275 & 23.0865 & 33.23 & 50.3689 & 68.65876 & 82.11935 \\
+0.5  & 0 & 0 & 0 & 0.285 & 1.14 & 14.2875 & 24.4837 & 34.37 & 52.74 & 71.3025 & 85.1269 \\
+1    & 0 & 0 & 0 & 0.3275 & 1.31 & 15.5475 & 25.9719 & 35.6 & 55.05 & 73.8675 & 88.03608 \\
+1.5  & 0 & 0 & 0 & 0.36875 & 1.475 & 16.83 & 27.4868 & 36.99 & 57.33 & 76.3875 & 90.8646 \\
+2    & 0 & 0 & 0 & 0.41 & 1.64 & 18.1125 & 28.9933 & 38.36 & 59.52 & 78.80625 & 93.58473 \\
+3    & 0 & 0 & 0.08 & 0.06375 & 3.265 & 20.655 & 31.8592 & 40.73 & 63.77 & 83.565 & 98.96052 \\
+4    & 0 & 0 & 0.25 & 1.1825 & 6.27 & 22.905 & 34.5292 & 43.24 & 67.54 & 87.94125 & 103.8736 \\
+5    & 0 & 0 & 0.39875 & 2.135 & 9.005 & 25.65 & 37.753 & 46.18 & 72.29125 & 93.465 & 110.1802 \\
+6    & 0 & 0 & 0.39875 & 2.135 & 9.005 & 25.65 & 37.753 & 46.18 & 72.29125 & 93.465 & 110.1802 \\
+7    & 0 & 0.08 & 0.19125 & 3.6175 & 10.785 & 29.07 & 41.3424 & 50.11 & 75.24125 & 97.7625 & 114.7238 \\
+8    & 0 & 0.25 & 1.215 & 5.815 & 12.915 & 33.64875 & 45.97435 & 55.39 & 78.235 & 102.7913 & 119.9434 \\
+9    & 0 & 0.39875 & 1.64875 & 6.74875 & 13.755 & 35.1225 & 47.2703 & 56.84 & 78.66875 & 104.1413 & 121.4325 \\
+10   & 0 & 0.39875 & 1.76875 & 6.92375 & 13.69 & 34.63875 & 46.42355 & 55.86 & 77.12875 & 102.8138 & 120.1602 \\
+11   & 0 & 0.28375 & 2.7775 & 7.75625 & 14.32 & 33.165 & 44.4448 & 53.66 & 75.1075 & 99.63 & 116.9016 \\
+12   & 0 & 0.8875 & 3.68125 & 8.3175 & 14.505 & 30.76875 & 41.32475 & 50.15 & 71.47125 & 94.48875 & 111.5695 \\
+13   & 0 & 0.9875 & 3.64 & 7.75625 & 13.245 & 27.3825 & 36.9543 & 45.11 & 65.28 & 87.19875 & 104.0031 \\
+14   & 0 & 0.82375 & 3.085 & 6.59625 & 11.25 & 23.49 & 31.8886 & 39.17 & 57.575 & 78.37875 & 94.66772 \\
+15   & 0 & 0.79375 & 2.65375 & 5.53125 & 9.345 & 19.65375 & 26.81195 & 33.1 & 49.42375 & 68.61375 & 84.00748 \\
+16   & 0 & 0.52625 & 1.9625 & 4.2 & 7.215 & 15.35625 & 21.19145 & 26.41 & 40.3225 & 57.15 & 71.1991 \\
+17   & 0 & 0.32 & 1.3125 & 2.90875 & 5.055 & 11.1825 & 15.5953 & 19.63 & 30.4925 & 44.53875 & 56.7421 \\
+18   & 0 & 0.20375 & 0.80375 & 1.79375 & 3.175 & 7.155 & 10.1566 & 12.93 & 20.73375 & 31.3425 & 41.0153 \\
+18.5 & 0 & 0.03 & 0.14125 & 0.74625 & 1.72 & 4.77 & 7.1024 & 9.18 & 15.33125 & 24.1875 & 32.35695 \\
+19   & 0 & 0 & 0.04125 & 0.2275 & 0.905 & 2.61 & 4.227 & 5.62 & 10.44875 & 17.06625 & 23.61822 \\
+19.5 & 0 & 0 & 0 & 0 & 0 & 0.48375 & 1.29295 & 2.46 & 5.08 & 9.88875 & 14.76973 \\
+20   & 0 & 0 & 0 & 0 & 0 & 0 & 0.0252 & 0.13 & 1 & 3.16125 & 5.946817 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+\subsection{Moment calculations using Simpson's rules}
+The moment of area, or the first moment of area, was also calculated
+using Simpson's rule. The moment up to waterline three for each station
+was calculated using Simpson's $3,10,-1$ rule, and beyond waterline three
+was calculated using Simpson's rule.
+
+\vspace{\baselineskip}\par\noindent Simpson's $3,10,-1$ rule provides the moment between the first two
+ordinates when three equally spaced ordinates are available.
+
+\begin{equation}
+\text{Simpson's }3,10,-1\text{ rule:}
+\qquad
+M = \frac{h^2}{24}\times\sum f(x)
+\end{equation}
+
+\vspace{\baselineskip}\par\noindent In Bonjean analysis, moment of area converts sectional area data into
+hydrostatic levels and stiffness measures needed to locate the center
+of buoyancy, compute transverse metacentric radius, and build righting
+capability across drafts, trims, and heel angles. By taking first and
+second moments of the waterplane and immersed-sectional areas about
+reference axes, Bonjean tables become directly usable for displacement,
+LCB/LCF, KM, and stability curve construction, linking geometry to
+equilibrium and strength checks in design and loading.
+\begin{table}[H]
+\centering
+\caption{Bonjean Momnets}
+\vspace{2mm}
+\label{tab:first_moments}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|ccccccccccc}
+\toprule
+\textbf{STN/WL} &
+\textbf{0} &
+\textbf{0.5} &
+\textbf{1} &
+\textbf{1.5} &
+\textbf{2} &
+\textbf{3} &
+\textbf{LWL} &
+\textbf{4} &
+\textbf{5} &
+\textbf{6} &
+\textbf{MDK} \\
+\midrule
+
+0    & 0 & 0 & 0 & 0.361875 & 7.599375 & 67.76438 & 96.58432 & 197.5568 & 328.5593 & 478.8218 & 566.9693 \\
+0.5  & 0 & 0 & 0 & 0.4275   & 10.08    & 71.7518  & 100.81303 & 204.1003 & 338.6278 & 492.9853 & 583.5162 \\
+1    & 0 & 0 & 0 & 0.49125  & 12.45375 & 75.61875 & 105.5521 & 211.1483 & 348.8033 & 506.8283 & 599.6151 \\
+1.5  & 0 & 0 & 0 & 0.553125 & 14.69813 & 80.09813 & 110.6715 & 218.4615 & 359.0115 & 520.4115 & 615.1995 \\
+2    & 0 & 0 & 0 & 0.615    & 16.9425  & 84.6075  & 115.7887 & 225.4912 & 368.6587 & 533.2762 & 630.0398 \\
+3    & 0 & 0 & 0.09 & 0.065625 & 22.58438 & 93.59438 & 125.6977 & 238.9852 & 387.6202 & 588.8542 & 659.6112 \\
+4    & 0 & 0 & 0.28125 & 1.68 & 28.1475 & 103.3875 & 136.6171 & 253.5833 & 407.1008 & 584.1983 & 688.482 \\
+5    & 0 & 0 & 0.392344 & 2.602969 & 31.92047 & 110.093 & 144.1265 & 263.8303 & 420.9928 & 602.5753 & 709.7141 \\
+6    & 0 & 0 & 0.448594 & 3.052969 & 34.49672 & 114.4017 & 148.9493 & 270.5618 & 430.5293 & 615.6368 & 725.0315 \\
+7    & 0 & 0.069375 & 0.111094 & 4.422656 & 38.38641 & 119.8214 & 154.8498 & 277.9623 & 439.9623 & 627.5523 & 738.5404 \\
+8    & 0 & 0.184688 & 1.089844 & 6.315469 & 42.54047 & 124.4105 & 159.6081 & 283.2756 & 446.4006 & 635.5956 & 747.7949 \\
+9    & 0 & 0.233438 & 1.504688 & 7.123125 & 43.77938 & 124.1419 & 158.8767 & 281.618 & 444.8705 & 634.823 & 747.8767 \\
+10   & 0 & 0.245625 & 1.621406 & 7.241719 & 42.90047 & 120.203 & 153.9729 & 274.1642 & 435.9167 & 625.1792 & 738.5393 \\
+11   & 0 & 0.04125 & 2.014219 & 7.396406 & 41.00391 & 114.3464 & 146.712 & 262.4858 & 420.6683 & 607.2608 & 720.0354 \\
+12   & 0 & 0.328125 & 2.327344 & 7.298906 & 37.91391 & 105.7364 & 136.0837 & 245.2574 & 397.3799 & 578.9624 & 690.3364 \\
+13   & 0 & 0.383438 & 2.229375 & 6.619688 & 33.45094 & 93.93094 & 121.5304 & 221.5391 & 364.8116 & 538.9541 & 648.2909 \\
+14   & 0 & 0.315 & 1.898906 & 5.636719 & 28.40672 & 80.49422 & 104.7909 & 193.8721 & 325.8196 & 489.6271 & 595.3211 \\
+15   & 0 & 0.263438 & 1.562813 & 4.625625 & 23.32313 & 66.92813 & 87.69812 & 164.6969 & 282.6944 & 432.4619 & 532.0025 \\
+16   & 0 & 0.203438 & 1.206094 & 3.591094 & 18.23859 & 53.18859 & 70.16524 & 133.6677 & 234.2952 & 365.4627 & 455.9436 \\
+17   & 0 & 0.119063 & 0.82875 & 2.528438 & 13.03219 & 38.99719 & 51.8662 & 100.425 & 180.3075 & 288.18 & 366.3761 \\
+18   & 0 & 0.076875 & 0.500625 & 1.56375 & 8.2125 & 25.445 & 34.24461 & 67.46211 & 125.3396 & 206.4671 & 268.0564 \\
+18.5 & 0 & 0.0225 & 0.125156 & 0.823594 & 5.398594 & 14.48859 & 25.30712 & 50.96087 & 97.47587 & 164.0609 & 215.8738 \\
+19   & 0 & 0 & 0.046406 & 0.325781 & 3.044531 & 11.84953 & 16.62141 & 34.58391 & 69.21891 & 120.4439 & 161.7917 \\
+19.5 & 0 & 0 & 0 & 0 & 0.48375 & 3.24375 & 5.6315 & 15.82025 & 38.43275 & 73.97525 & 104.5264 \\
+20   & 0 & 0 & 0 & 0 & 0 & 0.195 & 0.282212 & 0.777478 & 8.157478 & 23.57748 & 40.49028 \\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/BONJEANS_page-0001 (1).jpg}
+    \caption{Bonjean Curves}
+    \label{fig:placeholder}
+\end{figure}
+\subsection{Features of Bonjean Curves}
+The curves are plotted on the sheer plan of the ship with the draft on the vertical axis 
+and the area (or the moment of the area) on the horizontal, one set per station arrayed along 
+the length; differing horizontal and vertical scales are commonly used to keep the 
+drawing compact and readable. 
+\vspace{\baselineskip}\par\noindent Smooth, fuller curves near midship indicate higher area growth with draft 
+and thus stronger buoyancy contribution, whereas finer bow/stern curves show slower 
+growth, shaping the longitudinal buoyancy lever and affecting trim. 
+\vspace{\baselineskip}\par\noindent Inclusion of vertical moments with the area curves accelerates computation 
+of hydrostatic levers needed for KM/GM and righting moment development across 
+drafts and trims in early design stages.
+
+\section{HYDROSTATICS}
+Hydrostatics deals with the behavior of a vessel when it is at rest in water and describes the relationship between the hull geometry and its buoyancy characteristics. Hydrostatic curves are graphical representations of important hydrostatic parameters plotted against the draft of the vessel. They provide a convenient way to understand how the underwater characteristics of the hull change as the vessel's draft varies.
+\vspace{\baselineskip}\par\noindent The commonly plotted hydrostatic parameters include displacement, volume of displacement, waterplane area, LCB, LCF, KB, BM, KM, and TPC. These curves are generated from the geometry of the hull and provide the necessary information to evaluate the vessel under different loading conditions.
+\subsection{Uses of Hydrostatic Curves}
+Hydrostatic curves are used to determine the displacement and buoyancy characteristics of the vessel at different drafts. They help in checking whether the hull can provide the required buoyancy for the intended loading condition.
+
+\vspace{\baselineskip}\par\noindent They are also used in stability calculations, particularly for obtaining parameters such as \(KB\), \(BM\), \(KM\), and metacentric height. These values are required to assess the initial stability of the vessel at different drafts.
+
+\vspace{\baselineskip}\par\noindent The curves provide LCB and LCF information, which is useful to analyze the longitudinal position of buoyancy and flotation. This is important when studying the trim and loading conditions of the vessel.
+
+\vspace{\baselineskip}\par\noindent Hydrostatic curves are also used during weight and displacement verification, as well as in subsequent stability and loading calculations. Thus, they provide the basic hydrostatic data required for several later stages of the ship design process.
+
+\begin{enumerate}[\alph*)]
+
+\item \textbf{Volume of displacement} $(\nabla)$
+\begin{equation}
+\nabla =
+\left(\frac{1}{3}\right)
+(\text{station spacing})
+\sum f(V)
+\end{equation}
+
+\item \textbf{Mass displacement} $(\Delta)$
+\begin{equation}
+\Delta = \nabla \times (1.006) \times (1.025)
+\end{equation}
+
+\item \textbf{Transverse moment of inertia} $(I_T)$
+\begin{equation}
+I_T =
+\left(\frac{2}{9}\right)
+(\text{station spacing})
+\sum f(I_T)
+\end{equation}
+
+\item \textbf{Longitudinal moment of inertia} $(I_L)$
+\begin{equation}
+I_L =
+\left[
+\left(\frac{2}{3}\right)
+(\text{station spacing})
+\sum f(I_L)
+\right]
+-
+\left[AWP \times (LCF)^2\right]
+\end{equation}
+
+\item \textbf{Tons per cm immersion} $(TPC)$
+\begin{equation}
+TPC =
+\frac{AWP \times 1.025}{100}
+\end{equation}
+
+\item \textbf{Moment causing a trimming of 1 cm} $(MCT)$
+\begin{equation}
+MCT =
+\frac{\Delta \times BML}{LBP \times 100}
+\end{equation}
+
+\item \textbf{Longitudinal metacentric radius} $(BM_L)$
+\begin{equation}
+BM_L = \frac{I_L}{\nabla}
+\end{equation}
+
+\item \textbf{Transverse metacentric radius} $(BM_T)$
+\begin{equation}
+BM_T = \frac{I_T}{\nabla}
+\end{equation}
+
+\item \textbf{Longitudinal Center of Buoyancy} $(LCB)$
+\begin{equation}
+LCB = \frac{\sum f(M)}{\sum f(V)}
+\end{equation}
+
+\item \textbf{Longitudinal Center of Flotation} $(LCF)$
+\begin{equation}
+LCF =
+h \times
+\frac{\sum f(M)}{\sum f(A)}
+\end{equation}
+
+\item \textbf{Vertical Center of Buoyancy} $(VCB)$
+\begin{equation}
+VCB =
+h \times
+\frac{\sum f(M)}{\sum f(V)}
+\end{equation}
+
+\item \textbf{Block coefficient} $(C_B)$
+\begin{equation}
+C_B =
+\frac{\nabla}{L \times B \times T}
+\end{equation}
+
+\item \textbf{Prismatic coefficient} $(C_P)$
+\begin{equation}
+C_P =
+\frac{\nabla}{A_{\text{midships}} \times L}
+\end{equation}
+
+\item \textbf{Midship coefficient} $(C_M)$
+\begin{equation}
+C_M =
+\frac{A_{\text{midships}}}{B \times T}
+\end{equation}
+
+\item \textbf{Waterplane area coefficient} $(C_W)$
+\begin{equation}
+C_W =
+\frac{AWP}{L \times B}
+\end{equation}
+
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\caption{Hydrostatics}
+\vspace{2mm}
+\label{tab:hydrostatic_particulars}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrrr}
+\toprule
+\textbf{Parameter} &
+\textbf{WL 0} &
+\textbf{WL 0.5} &
+\textbf{WL 1} &
+\textbf{WL 1.5} &
+\textbf{WL 2} &
+\textbf{WL 3} &
+\textbf{LWL} &
+\textbf{WL 4} &
+\textbf{WL 5} &
+\textbf{WL 6} &
+\textbf{MDK} \\
+\midrule
+
+MOMENT &
+0 & 2450.903 & 10266.38 & 26943.71 & 52855.57 &
+126225.4 & 174578.9 & 214192.7 & 316317.7 & 429235.2 & 517408.9 \\
+
+VOLUME &
+0 & 33.21258 & 145.5911 & 420.5083 & 912.0136 &
+2479.658 & 3519.019 & 4360.03 & 6486.426 & 8673.824 & 10348.68 \\
+
+MASS &
+0 & 34.0429 & 149.2309 & 431.021 & 934.8139 &
+2541.649 & 3606.994 & 4469.03 & 6648.587 & 8890.669 & 10607.4 \\
+
+$I_T$ &
+0.029292 & 23.37902 & 377.3441 & 1930.003 & 5746.626 &
+15316.66 & 18404.11 & 20132.69 & 23366.47 & 26681.42 & 29612.49 \\
+
+AREA &
+2.787333 & 71.416 & 240.238 & 503.6033 & 826.369 &
+1188.195 & 1279.461 & 1331.366 & 1430.166 & 1525.726 & 1600.419 \\
+
+LCF &
+84.5973 & 77.75306 & 66.7228 & 57.03584 & 48.63651 &
+46.19513 & 46.98442 & 47.78763 & 49.79274 & 51.87801 & 53.46576 \\
+
+VCB &
+0.003784 & 0.073333 & 0.118658 & 0.013038 & -0.31396 &
+-0.59158 & -0.58823 & -0.56043 & -0.46346 & -0.34071 & -0.23462 \\
+
+$I_L$ &
+2.339833 & 7830.415 & 60144.95 & 222706 & 533078 &
+874560.8 & 973830.2 & 1036714 & 1172478 & 1317525 & 1433521 \\
+
+TPC &
+0.02857 & 0.732014 & 2.46244 & 5.161934 & 8.470282 &
+12.1719 & 13.11448 & 13.6465 & 14.6592 & 15.63869 & 16.40429 \\
+
+$BM_L$ &
+0 & 235.7665 & 413.1088 & 529.6115 & 584.5066 &
+352.6941 & 276.7335 & 237.7769 & 180.7587 & 151.8967 & 138.522 \\
+
+$BM_T$ &
+0 & 0.703921 & 2.591808 & 4.589691 & 6.301031 &
+6.176923 & 5.229897 & 4.617558 & 3.602364 & 3.076086 & 2.861475 \\
+
+MCT &
+0 & 0.002124 & 0.034289 & 0.175377 & 0.522189 &
+1.391806 & 1.672359 & 1.829433 & 2.132283 & 2.424509 & 2.690852 \\
+
+LCB &
+0 & 73.79441 & 70.51519 & 64.07414 & 57.95481 &
+50.90436 & 49.4101 & 49.12644 & 48.7661 & 49.4862 & 49.99756 \\
+
+$C_B$ &
+0 & 0.390672 & 0.321638 & 0.231504 & 0.246138 &
+0.343124 & 0.389879 & 0.421065 & 0.481272 & 0.517326 & 0.54152 \\
+
+$C_P$ &
+0 & 0.542 & 0.562 & 0.637964 & 0.605187 &
+0.63922 & 0.671898 & 0.688357 & 0.734743 & 0.72728 & 0.742448 \\
+
+$C_M$ &
+0 & 0.221528 & 0.280754 & 0.36288 & 0.406714 &
+0.536785 & 0.580266 & 0.611695 & 0.655021 & 0.711317 & 0.72937 \\
+
+$C_W$ &
+0.685185 & 0.630037 & 0.796096 & 0.623815 & 0.669072 &
+0.739877 & 0.758668 & 0.77145 & 0.795853 & 0.818979 & 0.84332 \\
+
+KB &
+0 & 0.3975 & 0.795 & 1.1925 & 1.59 &
+2.385 & 2.83656 & 3.18 & 3.975 & 4.77 & 5.3371 \\
+
+KMT &
+0 & 1.101421 & 3.386808 & 5.782191 & 7.891031 &
+8.561923 & 8.066457 & 7.797558 & 7.577364 & 7.846086 & 8.198575 \\
+
+KML &
+0 & 236.164 & 413.9038 & 530.804 & 586.0966 &
+355.0791 & 279.57 & 240.9569 & 184.7337 & 156.6667 & 143.8591 \\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CHAPTER 3/HYDROSTATICS_page-0001 (1).jpg}
+    \caption{Hydrostatics}
+    \label{fig:hydrostatics}
+\end{figure}
+
+\section{CONCLUSION}
+In this chapter, the hull geometry of the vessel was developed using the NPL systematic series. The applicability of the NPL series was verified by comparing the required design parameters with the specified criteria for NPL and UCL. The parent hull offsets were then scaled and transformed according to the design requirements to generate the final offset table.
+\vspace{\baselineskip}\par\noindent The generated offsets were used to develop the line plan and three-dimensional hull model in Rhino. The model was subsequently imported into Maxsurf and verified through hydrostatic calculations at the design waterline. Bonjean calculations and hydrostatic particulars were also determined, providing the necessary geometric and hydrostatic data for the subsequent stages of the vessel design.
+\section{SCOPE FOR NEXT CHAPTER}
+With the hull geometry and hydrostatic characteristics established, the next chapter focuses on the resistance of the vessel. The developed hull form will be analyzed to determine its resistance characteristics at the required operating speeds.
+\vspace{\baselineskip}\par\noindent The resistance analysis will include the selection of an appropriate resistance prediction method, the calculation of the major resistance components, and the estimation of the total resistance and the effective power required for the vessel. The results will subsequently provide the basis for the calculations of the propulsion system and the power requirement.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{CHAPTER 3/QR CODE.png}
+    \label{fig:placeholder}
+\end{figure}
+\vspace{\baselineskip} \par \noindent \textit{Please scan the QR code to access the digital copy of this chapter together with the latex code,excel calculations,Appendix and reference bib.tex .}
+\bibliographystyle{IEEEtran}
+
+\bibliography{refernce}
+
+\end{document}
